@@ -3,16 +3,15 @@
 /************************************************************************/
 #include "dynamicArray.h"
 
-DynamicArray::DynamicArray()
+DynamicArray::DynamicArray(int _capacity /* = 100 */)
 {
-	capacity = 100;
-	arrayInt = new int[capacity];
-	clear();
+	capacity = _capacity;
+	initialize();
 }
 
-void DynamicArray::clear()
+void DynamicArray::initialize()
 {
-	if (arrayInt == nullptr) throw runtime_error("Le tableau n'existe pas");
+	arrayInt = new int[capacity];
 
 	for (int i = 0; i < capacity; i++)
 	{
@@ -34,3 +33,18 @@ void DynamicArray::setElement(int _position, int _valeur)
 {
 	arrayInt[_position] = _valeur;
 }
+
+void DynamicArray::setCapacite(int _capacity)
+{
+	int *newArrayInt = new int[_capacity];
+
+	for (int i = 0; i < _capacity; i++)
+	{
+		i < capacity ? newArrayInt[i] = arrayInt[i] : newArrayInt[i] = 0;
+	}
+
+	delete arrayInt;
+	capacity = _capacity;
+	arrayInt = newArrayInt;
+}
+

@@ -12,15 +12,16 @@ class DynamicArray
 {
 
 public:
-	DynamicArray();
+	DynamicArray(int _capacity = 100);
 
 	int getCapacite() const;
 	int getElement(int _position) const;
 	
 	void setElement(int _position, int _valeur);
+	void setCapacite(const int _capacity);
 
 private:
-	void clear();
+	void initialize();
 
 private:
 	int *arrayInt;
