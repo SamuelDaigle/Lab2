@@ -21,9 +21,6 @@ public:
 	void setCapacite(const int _capacity);
 
 private:
-	void initialize();
-
-private:
 	int *arrayInt;
 	int capacity;
 };

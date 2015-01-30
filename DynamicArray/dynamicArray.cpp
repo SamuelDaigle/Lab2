@@ -5,12 +5,10 @@
 
 DynamicArray::DynamicArray(int _capacity /* = 100 */)
 {
+	if (_capacity < 1) throw invalid_argument("La capacité doit être suppérieur ou égal à 1");
+	
 	capacity = _capacity;
-	initialize();
-}
 
-void DynamicArray::initialize()
-{
 	arrayInt = new int[capacity];
 
 	for (int i = 0; i < capacity; i++)
@@ -31,6 +29,11 @@ int DynamicArray::getElement(int _position) const
 
 void DynamicArray::setElement(int _position, int _valeur)
 {
+	if (_position > capacity)
+	{
+		setCapacite(_position);
+	}
+
 	arrayInt[_position] = _valeur;
 }
 
