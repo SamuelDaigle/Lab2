@@ -13,12 +13,15 @@ class DynamicArray
 
 public:
 	DynamicArray(int _capacity = 100);
+	DynamicArray(const DynamicArray& _other);
 
 	int getCapacite() const;
 	int getElement(int _position) const;
 	
 	void setElement(int _position, int _valeur);
 	void setCapacite(const int _capacity);
+
+	bool operator==(DynamicArray& _other);
 
 private:
 	int *arrayInt;
