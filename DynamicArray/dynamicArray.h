@@ -21,7 +21,8 @@ public:
 	void setElement(int _position, int _valeur);
 	void setCapacite(const int _capacity);
 
-	bool operator==(DynamicArray& _other);
+	bool operator==(DynamicArray& _other) const;
+	const DynamicArray& operator+=(DynamicArray& _other);
 
 private:
 	int *arrayInt;

@@ -64,7 +64,7 @@ void DynamicArray::setCapacite(int _capacity)
 	arrayInt = newArrayInt;
 }
 
-bool DynamicArray::operator==(DynamicArray& _other)
+bool DynamicArray::operator==(DynamicArray& _other) const
 {
 	bool result = true;
 
@@ -84,3 +84,18 @@ bool DynamicArray::operator==(DynamicArray& _other)
 	return result;
 }
 
+const DynamicArray& DynamicArray::operator+=(DynamicArray& _other)
+{
+	int oldCapacity = capacity;
+	capacity += _other.capacity;
+	int *newArray = new int[capacity];
+
+	for (int i = 0; i < capacity; i++)
+	{
+		i < oldCapacity ? newArray[i] = arrayInt[i] : newArray[i] = _other.arrayInt[i - oldCapacity];
+	}
+
+	arrayInt = newArray;
+	
+	return *this;
+}
