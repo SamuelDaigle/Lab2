@@ -27,6 +27,11 @@ DynamicArray::DynamicArray(const DynamicArray& _other)
 	}
 }
 
+DynamicArray::~DynamicArray()
+{
+	delete[] arrayInt;
+}
+
 int DynamicArray::getCapacite() const
 {
 	return capacity;
@@ -59,7 +64,7 @@ void DynamicArray::setCapacite(int _capacity)
 		i < capacity ? newArrayInt[i] = arrayInt[i] : newArrayInt[i] = 0;
 	}
 
-	delete arrayInt;
+	delete[] arrayInt;
 	capacity = _capacity;
 	arrayInt = newArrayInt;
 }
@@ -82,6 +87,18 @@ bool DynamicArray::operator==(DynamicArray& _other) const
 	}
 
 	return result;
+}
+
+const DynamicArray& DynamicArray::operator=(DynamicArray& _other)
+{
+	capacity = _other.capacity;
+	arrayInt = new int[capacity];
+	for (int i = 0; i < capacity; i++)
+	{
+		arrayInt[i] = _other.arrayInt[i];
+	}
+
+	return *this;
 }
 
 const DynamicArray& DynamicArray::operator+=(DynamicArray& _other)
